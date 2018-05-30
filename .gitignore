@@ -30,3 +30,16 @@
 *.exe
 *.out
 *.app
+
+# MacOS
+
+.DS_Store
+
+# Practica
+
+server
+client
+PaqueteDatagrama.o
+Respuesta.o
+SocketDatagrama.o
+Solicitud.o
