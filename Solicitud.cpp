@@ -46,7 +46,7 @@ char * Solicitud::doOperation(char *IP, int puerto, int operationId, char *argum
     
     cout << "Se crea el paquete 📦" << endl;
 
-    socketlocal->recibe(paq1);
+    socketlocal->recibeTimeout(paq1, 5, 10);
     
     cout << "Recibe paquete 🛬" << endl;
 

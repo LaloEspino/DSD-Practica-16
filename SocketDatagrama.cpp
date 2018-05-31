@@ -57,6 +57,7 @@ int SocketDatagrama::recibeTimeout(PaqueteDatagrama & p, time_t segundos, suseco
     //std::cout << "Mensaje recibido de: " << inet_ntoa(direccionForanea.sin_addr) << ":" << ntohs(direccionForanea.sin_port) << std::endl;
     std::cout << "Puerto: " << p.obtienePuerto() << endl;
     std::cout << "IP: " << p.obtieneDireccion() << endl;
+    cout << "Tiempo de recepcion transcurrido"<<endl;
     return regreso;
 }
 
