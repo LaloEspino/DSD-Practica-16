@@ -42,4 +42,22 @@ int SocketDatagrama::envia(PaqueteDatagrama & p)
     return sendto(s,p.obtieneDatos(), p.obtieneLongitud(), 0, (struct sockaddr *) &direccionForanea, sizeof(direccionForanea));
 }
 
+int SocketDatagrama::recibeTimeout(PaqueteDatagrama & p, time_t segundos, suseconds_t microsegundos)
+{
+    struct timeval timeout;
+    timeout.tv_sec = segundos;
+    timeout.tv_usec = microsegundos;
+    setsockopt(s, SOL_SOCKET, SO_RCVTIMEO, (char *)&timeout, sizeof(timeout));
+    unsigned int addr_len = sizeof(direccionForanea);
+    bzero((char *)&direccionForanea, sizeof(direccionForanea));
+    int regreso = recvfrom(s,p.obtieneDatos(),p.obtieneLongitud(), 0, (struct sockaddr *) &direccionForanea, &addr_len);
+    cout<<"P: "<<p.obtieneLongitud()<<endl;
+    p.inicializaPuerto(ntohs(direccionForanea.sin_port));
+    p.inicializaIp(inet_ntoa(direccionForanea.sin_addr));
+    //std::cout << "Mensaje recibido de: " << inet_ntoa(direccionForanea.sin_addr) << ":" << ntohs(direccionForanea.sin_port) << std::endl;
+    std::cout << "Puerto: " << p.obtienePuerto() << endl;
+    std::cout << "IP: " << p.obtieneDireccion() << endl;
+    return regreso;
+}
+
 
