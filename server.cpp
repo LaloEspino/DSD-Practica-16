@@ -17,20 +17,31 @@ using namespace std;
 int main() {
 
     Respuesta res(9091);
+    unsigned int nbd = 0;
     
     
     while (true) {
         cout << endl << "Esperando conexión... 🙄" << endl;
         struct mensaje msg = *res.getRequest();
         
-        int longitud = strlen(msg.arguments);
-        char invertido[longitud];
+        //int longitud = strlen(msg.arguments);
+        //char invertido[longitud];
         
         /* Se realiza la operación según la operación solicitada */
         
         switch (msg.operationId) {
             case 1:
-                /* Invierte cadena */
+                cout << "Bienvenido"<<endl;
+                cout << "Usted desea consultar su saldo"<<endl;
+
+            //Operacion de lectura
+            break;
+
+            case 2:
+            //Operacion de escritura
+            break;
+            /*case 1:
+                 Invierte cadena 
 
                 longitud = strlen(msg.arguments);
                 invertido[longitud];
@@ -43,9 +54,9 @@ int main() {
 
                 strcpy(msg.arguments, invertido);
                 
-                /* Invierte cadena */
+                 Invierte cadena 
                 
-                break;
+                break;*/
                 
             default:
                 char ERROR [] = "ERROR";

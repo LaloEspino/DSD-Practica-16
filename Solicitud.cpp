@@ -35,8 +35,10 @@ char * Solicitud::doOperation(char *IP, int puerto, int operationId, char *argum
     PaqueteDatagrama paq((char *)&msg, size, IP, puerto);
     
     cout << "Se crea el paquete 📦" << endl;
-    
-    socketlocal->envia(paq);
+    for(int i=0; i<=7; i++)
+    {
+        socketlocal->envia(paq);
+    }
     
     cout << "Se envia el paquete 🛫" << endl;
 
@@ -46,7 +48,7 @@ char * Solicitud::doOperation(char *IP, int puerto, int operationId, char *argum
     
     cout << "Se crea el paquete 📦" << endl;
 
-    socketlocal->recibeTimeout(paq1, 5, 10);
+    socketlocal->recibeTimeout(paq1, 1, 1);
     
     cout << "Recibe paquete 🛬" << endl;
 

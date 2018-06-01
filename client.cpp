@@ -21,7 +21,7 @@ int main(int argc, char ** argv) {
         cout << "***********************************************" << endl;
         cout << "Faltan argumentos necesarios, intente de nuevo." << endl;
         cout << "Ejecute de la siguiente forma:" << endl;
-        cout << "./client IP PORT CADENA OPERACION" << endl;
+        cout << "./client IP PORT NUM_CICLOS" << endl;
         cout << "***********************************************" << endl;
 
         exit(1);
@@ -31,20 +31,28 @@ int main(int argc, char ** argv) {
     
     char IP[16];
     char cadena[4000];
+    char peso[2] = "1";
     
     strcpy(IP, argv[1]);
     int port = atoi(argv[2]);
-    strcpy(cadena, argv[3]);
-    int operacion = atoi(argv[4]);
+    int num_ciclos = atoi(argv[3]);
+    for(int i=0; i< num_ciclos; i++)
+    {
+        char * respuesta = sol.doOperation(IP, port, 1, peso);
+        cout <<"Lectura:"<<respuesta << endl;
+        char * respuesta2 = sol.doOperation(IP, port, 2, peso);
+        cout << "Escrituta:"<<respuesta2 << endl;
+    }
 
 //    char IP[] = "10.100.66.80";
 //    int port = 9091;
 //    char cadena[] = "Eduardo Espino y Victor Estrada";
 //    int invierteCadena = 1;
 
-    char * respuesta = sol.doOperation(IP, port, operacion, cadena);
-    
-    cout << respuesta << endl;
+    char * respuesta = sol.doOperation(IP, port, 1, peso);
+    cout <<"Lectura:"<<respuesta << endl;
+    char * respuesta2 = sol.doOperation(IP, port, 2, peso);
+    cout << "Escrituta:"<<respuesta2 << endl;
     
     return 0;
     
