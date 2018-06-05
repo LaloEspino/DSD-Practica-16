@@ -23,7 +23,8 @@ int main() {
     while (true) {
         cout << endl << "Esperando conexión... 🙄" << endl;
         struct mensaje msg = *res.getRequest();
-        
+        struct mensaje local;
+        memcpy(&local, &msg, sizeof(msg));
         //int longitud = strlen(msg.arguments);
         //char invertido[longitud];
         
@@ -31,34 +32,36 @@ int main() {
         
         switch (msg.operationId) {
             case 1:
-                cout << "Bienvenido"<<endl;
-                cout << "Usted desea consultar su saldo"<<endl;
-                nbd = 1;
-                nbd++;
+                char *saldo = new char;
+                sprintf(saldo,"%i",nbd);
+                //cout << saldo;
+                strcpy(local.arguments, saldo);
+                cout << "ARGS: " << local.arguments << endl;
+                cout << "Valor en la cuenta :" << local.arguments << endl;
+                res.sendReply(local.arguments, local.IP, local.puerto);
+
 
             //Operacion de lectura
             break;
 
             case 2:
+                int nbd1 = atoi(local.arguments);
+            //cout << "VALOR DE NBD1: " << nbd1;
+                nbd += nbd1;
+
+           // printf("VALOR DE LA SUMA: %d \n", nbd += nbd1);
+            
+                char *saldo1 = new char;
+                sprintf(saldo1,"%i",nbd);
+            //cout << "VALOR DE SALDO1: " << saldo1;
+                strcpy(local.arguments, saldo1);
+                cout << "ARGS: " << local.arguments << endl;
             //Operacion de escritura
-            break;
-            /*case 1:
-                 Invierte cadena 
+                cout << "Valor en la cuenta :" << local.arguments << endl;
+                res.sendReply(local.arguments, local.IP, local.puerto);
 
-                longitud = strlen(msg.arguments);
-                invertido[longitud];
-
-                for (int x = 0, y = longitud - 1; x < longitud; x ++, y --) {
-                    invertido[x] = msg.arguments[y];
-                }
-
-                invertido[longitud] = '\0';
-
-                strcpy(msg.arguments, invertido);
-                
-                 Invierte cadena 
-                
-                break;*/
+                break;
+            
                 
             default:
                 char ERROR [] = "ERROR";
