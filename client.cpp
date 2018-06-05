@@ -49,10 +49,10 @@ int main(int argc, char ** argv) {
 //    char cadena[] = "Eduardo Espino y Victor Estrada";
 //    int invierteCadena = 1;
 
-    char * respuesta = sol.doOperation(IP, port, 1, peso);
+  /*  char * respuesta = sol.doOperation(IP, port, 1, peso);
     cout <<"Lectura:"<<respuesta << endl;
     char * respuesta2 = sol.doOperation(IP, port, 2, peso);
-    cout << "Escrituta:"<<respuesta2 << endl;
+    cout << "Escrituta:"<<respuesta2 << endl;*/
     
     return 0;
     

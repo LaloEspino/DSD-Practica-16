@@ -33,6 +33,8 @@ int main() {
             case 1:
                 cout << "Bienvenido"<<endl;
                 cout << "Usted desea consultar su saldo"<<endl;
+                nbd = 1;
+                nbd++;
 
             //Operacion de lectura
             break;
