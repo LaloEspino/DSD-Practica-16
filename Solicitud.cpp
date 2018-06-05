@@ -18,6 +18,7 @@ char * Solicitud::doOperation(char *IP, int puerto, int operationId, char *argum
     
     struct mensaje msg;
     unsigned int size = sizeof(struct mensaje);
+    char guardate[4000];
 
     /* Se pasan los atributos a la estructura msg */
 
@@ -31,18 +32,33 @@ char * Solicitud::doOperation(char *IP, int puerto, int operationId, char *argum
     cout << "Se copiaron los argumentos a la estructura 📩" << endl;
 
     /* Se envia la estructura  */
-
-    PaqueteDatagrama paq((char *)&msg, size, IP, puerto);
     
     cout << "Se crea el paquete 📦" << endl;
     for(int i=0; i<=7; i++)
     {
+        /* Se envia la estructura  */
+        PaqueteDatagrama paq((char *)&msg, size, IP, puerto);
         socketlocal->envia(paq);
+        
+        cout << "Se envia el paquete 🛫" << endl;
+
+        PaqueteDatagrama pack(strlen(arguments));
+
+        cout << "Se crea el paquete 📦" << endl;
+
+        socketlocal->recibe(pack);
+
+        cout << "Recibe paquete 🛬" << endl;
+
+        memcpy(guardate, pack.obtieneDatos(), sizeof(guardate));
+
+        if(guardate != NULL)
+            return guardate;
     }
     
-    cout << "Se envia el paquete 🛫" << endl;
+    /*cout << "Se envia el paquete 🛫" << endl;
 
-    /* Se recibe la respuesta  */
+    Se recibe la respuesta  
 
     PaqueteDatagrama paq1(strlen(arguments));
     
@@ -54,6 +70,6 @@ char * Solicitud::doOperation(char *IP, int puerto, int operationId, char *argum
 
     char * respuesta = (char *)paq1.obtieneDatos();
 
-    return respuesta;
+    return respuesta;*/
     
 }
