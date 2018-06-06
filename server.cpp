@@ -30,8 +30,55 @@ int main() {
         
         /* Se realiza la operación según la operación solicitada */
         
-        switch (msg.operationId) {
-            case 1:
+        if(local.operationId == 1)
+        {
+            char *saldo = new char;
+                sprintf(saldo,"%i",nbd);
+                //cout << saldo;
+                strcpy(local.arguments, saldo);
+                cout << "ARGS: " << local.arguments << endl;
+                cout << "Valor en la cuenta :" << local.arguments << endl;
+                res.sendReply(local.arguments, local.IP, local.puerto);
+            //Operacion de lectura
+        }if(local.operationId == 2){
+            int nbd1 = atoi(local.arguments);
+            //cout << "VALOR DE NBD1: " << nbd1;
+                nbd += nbd1;
+
+           // printf("VALOR DE LA SUMA: %d \n", nbd += nbd1);
+            
+                char *saldo1 = new char;
+                sprintf(saldo1,"%i",nbd);
+            //cout << "VALOR DE SALDO1: " << saldo1;
+                strcpy(local.arguments, saldo1);
+                cout << "ARGS: " << local.arguments << endl;
+            //Operacion de escritura
+                cout << "Valor en la cuenta :" << local.arguments << endl;
+                res.sendReply(local.arguments, local.IP, local.puerto);
+
+        }else{
+                char ERROR [] = "ERROR";
+                cout << ERROR << endl;
+                strcpy(msg.arguments, ERROR);
+
+        }
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /*switch (msg.operationId) {
+            case 0:
                 char *saldo = new char;
                 sprintf(saldo,"%i",nbd);
                 //cout << saldo;
@@ -39,12 +86,10 @@ int main() {
                 cout << "ARGS: " << local.arguments << endl;
                 cout << "Valor en la cuenta :" << local.arguments << endl;
                 res.sendReply(local.arguments, local.IP, local.puerto);
-
-
             //Operacion de lectura
             break;
 
-            case 2:
+            case 1:
                 int nbd1 = atoi(local.arguments);
             //cout << "VALOR DE NBD1: " << nbd1;
                 nbd += nbd1;
@@ -60,18 +105,17 @@ int main() {
                 cout << "Valor en la cuenta :" << local.arguments << endl;
                 res.sendReply(local.arguments, local.IP, local.puerto);
 
-                break;
+            break;
             
                 
             default:
                 char ERROR [] = "ERROR";
                 cout << ERROR << endl;
                 strcpy(msg.arguments, ERROR);
-                break;
-        }
+            break;
+        }*/
         
         cout << "IP " << msg.IP << "PT " << msg.puerto << endl;
-        
         res.sendReply(msg.arguments, msg.IP, msg.puerto);
 
     }
