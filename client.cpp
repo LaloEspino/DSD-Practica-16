@@ -30,7 +30,7 @@ int main(int argc, char ** argv) {
     Solicitud sol;
     
     char IP[16];
-    //char dineros[4000];
+    char prueba[]="Prueba";
     char monto[4000];
     
     strcpy(IP, argv[1]);
@@ -41,10 +41,10 @@ int main(int argc, char ** argv) {
     {
         cout << "Ingrese su monto" <<endl;
         cin >> monto;
-        memcpy(monto, sol.doOperation(IP, port, 1, monto), sizeof(monto));
+        memcpy(monto, sol.doOperation(IP, port, 1, prueba), sizeof(monto));
         printf("El saldo es : %s\n", monto);
     }else{
-        memcpy(monto, sol.doOperation(IP, port, 2, monto), sizeof(monto));
+        memcpy(monto, sol.doOperation(IP, port, 2, prueba), sizeof(monto));
         printf("El saldo es : %s\n", monto);
     }
 
