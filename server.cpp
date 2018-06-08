@@ -38,8 +38,7 @@ int main() {
                 //cout << saldo;
                 strcpy(local.arguments, saldo);
                 cout << "ARGS: " << local.arguments << endl;
-                cout << "Valor en la cuenta :" << local.arguments << endl;
-                res.sendReply(local.arguments, local.IP, local.puerto);
+                
             //Operacion de lectura
         }else{
             cout<< "Que esta pasando"<<endl;
@@ -55,10 +54,12 @@ int main() {
                 strcpy(local.arguments, saldo1);
                 cout << "ARGS: " << local.arguments << endl;
             //Operacion de escritura
-                cout << "Valor en la cuenta :" << local.arguments << endl;
-                res.sendReply(local.arguments, local.IP, local.puerto);
+                
 
         }
+
+        cout << "Valor en la cuenta :" << local.arguments << endl;
+        res.sendReply(local.arguments, local.IP, local.puerto);
 
         
         
@@ -114,8 +115,8 @@ int main() {
             break;
         }*/
         
-        cout << "IP " << msg.IP << "PT " << msg.puerto << endl;
-        res.sendReply(msg.arguments, msg.IP, msg.puerto);
+       // cout << "IP " << msg.IP << "PT " << msg.puerto << endl;
+        //res.sendReply(msg.arguments, msg.IP, msg.puerto);
 
     }
 
