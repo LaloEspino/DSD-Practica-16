@@ -30,7 +30,7 @@ int main() {
         
         /* Se realiza la operación según la operación solicitada */
         
-        if(local.operationId == 1)
+        if(msg.operationId == 1)
         {
             cout<< "Que esta pasando"<<endl;
             char *saldo = new char;
@@ -60,7 +60,7 @@ int main() {
 
         }
 
-        }
+        
         
 
 
