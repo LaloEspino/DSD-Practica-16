@@ -42,10 +42,10 @@ int main(int argc, char ** argv) {
         cout << "Ingrese su monto" <<endl;
         cin >> monto;
         memcpy(monto, sol.doOperation(IP, port, 1, monto), sizeof(monto));
-        cout << "El dinero que usted tiene es:"<<monto;
+        printf("El saldo es : %s\n", monto);
     }else{
         memcpy(monto, sol.doOperation(IP, port, 2, monto), sizeof(monto));
-        cout << "El dinero que usted tiene es:"<<monto;
+        printf("El saldo es : %s\n", monto);
     }
 
         

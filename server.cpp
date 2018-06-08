@@ -32,6 +32,7 @@ int main() {
         
         if(local.operationId == 1)
         {
+            cout<< "Que esta pasando"<<endl;
             char *saldo = new char;
                 sprintf(saldo,"%i",nbd);
                 //cout << saldo;
@@ -40,7 +41,8 @@ int main() {
                 cout << "Valor en la cuenta :" << local.arguments << endl;
                 res.sendReply(local.arguments, local.IP, local.puerto);
             //Operacion de lectura
-        }if(local.operationId == 2){
+        }else{
+            cout<< "Que esta pasando"<<endl;
             int nbd1 = atoi(local.arguments);
             //cout << "VALOR DE NBD1: " << nbd1;
                 nbd += nbd1;
@@ -56,10 +58,7 @@ int main() {
                 cout << "Valor en la cuenta :" << local.arguments << endl;
                 res.sendReply(local.arguments, local.IP, local.puerto);
 
-        }else{
-                char ERROR [] = "ERROR";
-                cout << ERROR << endl;
-                strcpy(msg.arguments, ERROR);
+        }
 
         }
         
