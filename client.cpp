@@ -40,7 +40,7 @@ int main(int argc, char ** argv) {
     if(operation_id == 1)
     {
         cout << "Ingrese su monto" <<endl;
-        cin >> monto;
+        cin >> prueba;
         memcpy(monto, sol.doOperation(IP, port, 1, prueba), sizeof(monto));
         printf("El saldo es : %s\n", monto);
     }else{
